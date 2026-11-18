@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>El Rey de las Llantas · Tu próximo camino empieza aquí</title>
+    <meta
+      name="description"
+      content="Encuentra tu llanta por medida, revisa su ficha y arma tu cotización por WhatsApp. El Rey de las Llantas, Panamá."
+    />
+    <meta
+      name="theme-color"
+      content="#0b4aa2"
+    />
+    <link
+      rel="stylesheet"
+      href="css/styles.css"
+    />
+  </head>
+  <body>
+    <a
+      class="skip"
+      href="#catalogo"
+      >Ir al catálogo</a
+    >
+    <div class="topline">
+      <div class="wrap">
+        PANAMÁ <span>Tu carro. Tu camino. Tus llantas.</span>
+      </div>
+    </div>
+    <header>
+      <div class="wrap header-row">
+        <a
+          class="logo"
+          href="index.html"
+          aria-label="El Rey de las Llantas, inicio"
+          ><svg
+            viewBox="0 0 44 48"
+            aria-hidden="true"
+          >
+            <circle
+              cx="22"
+              cy="29"
+              r="16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="7"
+            />
+            <circle
+              cx="22"
+              cy="29"
+              r="5"
+              fill="currentColor"
+            />
+            <path
+              d="M5 4l9 7 8-10 8 10 9-7-4 15H9Z"
+              fill="#ffc20e"
+            /></svg
+          ><span>EL REY<small>DE LAS LLANTAS</small></span></a
+        >
+        <nav aria-label="Principal">
+          <a href="#catalogo">Llantas</a><a href="#encuentra">Tu vehículo</a
+          ><a href="#guia">Guía de medidas</a>
+        </nav>
+        <button
+          class="btn"
+          data-order
+        >
+          Mi pedido
+          <span
+            class="count"
+            id="orderCount"
+            >0</span
+          >
+        </button>
+      </div>
+    </header>
+    <main>
+      <section
+        class="hero"
+        id="hero"
+      >
+        <div
+          class="hero-bg"
+          id="heroBgA"
+          aria-hidden="true"
+        ></div>
+        <div
+          class="hero-bg"
+          id="heroBgB"
+          aria-hidden="true"
+        ></div>
+        <div class="hero-shade"></div>
+        <div class="wrap hero-content">
+          <p class="eyebrow light">EL REY DE LAS LLANTAS · PANAMÁ</p>
+          <h1>EL CAMINO<br />ES TUYO.<br /><em>ELIGE TU LLANTA.</em></h1>
+          <p class="hero-copy">
+            Para la ciudad, la carretera y lo que viene después.<br />Encuentra
+            tu medida y cotiza con nosotros.
+          </p>
+          <a
+            class="btn"
+            href="#catalogo"
+            >Explorar llantas <span aria-hidden="true">→</span></a
+          >
+          <div class="hero-bottom">
+            <span>PREPARADOS PARA TU PRÓXIMO CAMINO</span>
+            <div
+              id="heroDots"
+              aria-label="Elegir foto de portada"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="wrap section"
+        id="catalogo"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">ENCUENTRA TU PRÓXIMO JUEGO</p>
+            <h2>LLANTAS CON NOMBRE<br />Y MEDIDA PROPIA.</h2>
+          </div>
+          <p>
+            Cada medida e índice tiene su propia ficha.<br />Así sabes
+            exactamente qué estás cotizando.
+          </p>
+        </div>
+        <div class="filters">
+          <label class="search"
+            ><span class="sr-only">Buscar llantas</span
+            ><input
+              id="search"
+              type="search"
+              placeholder="Marca, modelo o medida · Ej. 35x12.50R17LT" /></label
+          ><select
+            id="type"
+            aria-label="Tipo de llanta"
+          >
+            <option value="">Todos los usos</option>
+          </select
+          ><select
+            id="rim"
+            aria-label="Rin de la llanta"
+          >
+            <option value="">Todos los rines</option>
+          </select>
+          <button
+            class="clear-filters"
+            id="clearFiltersBar"
+            type="button"
+            hidden
+          >
+            Limpiar filtros
+          </button>
+        </div>
+        <div
+          id="brandFilter"
+          class="brand-filter"
+          role="group"
+          aria-label="Filtrar por marca"
+        ></div>
+        <div
+          id="vehicleFilter"
+          class="filter-summary"
+          hidden
+        ></div>
+        <p
+          class="small"
+          id="resultCount"
+          aria-live="polite"
+        ></p>
+        <div
+          id="catalog"
+          class="catalog-grid"
+        ></div>
+        <div class="more-row">
+          <button
+            class="btn outline"
+            id="showMore"
+            type="button"
+            hidden
+          ></button>
+        </div>
+      </section>
+      <div class="wrap finder-wrap">
+        <section
+          class="finder"
+          id="encuentra"
+          aria-labelledby="finderTitle"
+        >
+          <div class="finder-head">
+            <div>
+              <p class="eyebrow">EMPIEZA POR AQUÍ · ¿QUÉ MANEJAS?</p>
+              <h2 id="finderTitle">Encuentra tu llanta</h2>
+            </div>
+            <div class="finder-tools">
+              <label class="search"
+                ><span class="sr-only"
+                  >Buscar tu vehículo por marca o modelo</span
+                ><input
+                  id="vehicleSearch"
+                  type="search"
+                  placeholder="Marca o modelo · Ej. Hilux"
+                  autocomplete="off"
+                  enterkeyhint="search" /></label>
+            </div>
+          </div>
+          <div class="carousel-wrap">
+            <div
+              class="carousel"
+              id="carousel"
+              role="region"
+              aria-label="Vehículos. Arrastra o desliza para explorar."
+            >
+              <div
+                class="car-track"
+                id="carTrack"
+              ></div>
+            </div>
+          </div>
+          <p
+            class="small finder-note"
+            id="vehicleCount"
+            aria-live="polite"
+          ></p>
+          <p class="small finder-note">
+            Toca tu vehículo para ver las llantas con medidas de referencia. Son
+            orientativas: confirma año, versión y medida en la etiqueta de tu
+            carro.
+          </p>
+        </section>
+      </div>
+      <section class="feature">
+        <div class="wrap feature-grid">
+          <div>
+            <p class="eyebrow light">DEL ASFALTO A LA AVENTURA</p>
+            <h2>UNA LLANTA.<br />MÁS POSIBILIDADES.</h2>
+            <p>
+              Conoce la WILDPEAK AT4/W en medida 35x12.50R17LT 125R. Revisa la
+              variante exacta antes de armar tu pedido.
+            </p>
+            <button
+              class="btn"
+              id="featuredButton"
+            >
+              Conocer esta llanta →
+            </button>
+          </div>
+          <div class="feature-photo">
+            <img
+              id="featuredImage"
+              src="img/llantas/falken-wildpeak-at4w-35x12.50r17lt-125r.png"
+              alt="Falken WILDPEAK AT4/W 35x12.50R17LT 125R"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="brands"
+        id="brandsSection"
+        aria-labelledby="brandsTitle"
+      >
+        <div class="wrap brands-head">
+          <p class="eyebrow">MARCAS QUE PUEDES ENCONTRAR</p>
+          <h2 id="brandsTitle">LLANTAS DE MARCAS RECONOCIDAS.</h2>
+        </div>
+        <div
+          class="brand-marquee"
+          id="brandMarquee"
+          role="img"
+          aria-label="Marcas de llantas"
+        >
+          <div
+            class="brand-track"
+            id="brandTrack"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </section>
+
+      <section
+        class="guide"
+        id="guia"
+      >
+        <div class="wrap guide-grid">
+          <div>
+            <p class="eyebrow">NO TIENES QUE ADIVINAR</p>
+            <h2>LA MEDIDA ESTÁ<br />EN TU LLANTA.</h2>
+            <p>
+              Busca este código en el costado. Toca cada parte para conocer su
+              significado.
+            </p>
+            <div
+              id="decoder"
+              class="decoder"
+            ></div>
+            <p
+              id="decodeHelp"
+              class="decode-help"
+              aria-live="polite"
+            ></p>
+          </div>
+          <div class="guide-side">
+            <span class="number">01 / 02 / 03</span>
+            <h3>De la medida<br />a tu próximo camino.</h3>
+            <ol>
+              <li>Revisa la medida actual de tu llanta.</li>
+              <li>Agrega la variante y la cantidad al pedido.</li>
+              <li>Envía tu consulta por WhatsApp.</li>
+            </ol>
+            <p class="small">
+              Precio, disponibilidad e instalación se confirman al cotizar. El
+              pedido no genera un cobro.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        class="contact wrap section"
+        id="contacto"
+      >
+        <div>
+          <p class="eyebrow">TE AYUDAMOS A ELEGIR</p>
+          <h2>¿LISTO PARA RODAR?</h2>
+          <p>Arma tu pedido o cuéntanos qué llanta necesitas.</p>
+        </div>
+        <button
+          class="btn blue"
+          data-order
+        >
+          Preparar pedido por WhatsApp →
+        </button>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap footer-grid">
+        <div class="footer-brand">
+          EL REY DE LAS LLANTAS<small>Tu próximo camino empieza aquí.</small>
+        </div>
+        <div id="contactDetails"></div>
+        <div>
+          <a href="admin.html">Administración</a
+          ><small>Panamá · Solo llantas</small>
+        </div>
+      </div>
+    </footer>
+    <button
+      class="floating-order"
+      data-order
+      aria-label="Abrir pedido para WhatsApp"
+    >
+      → <span>Mi pedido</span><b id="floatingCount">0</b>
+    </button>
+    <dialog
+      id="detail"
+      aria-label="Ficha de la llanta"
+    ></dialog>
+    <dialog
+      id="order"
+      class="order-dialog"
+      aria-labelledby="orderTitle"
+    >
+      <button
+        class="close"
+        data-close
+        aria-label="Cerrar pedido"
+      >
+        ×
+      </button>
+      <p class="eyebrow">TU COTIZACIÓN</p>
+      <h2 id="orderTitle">MI PEDIDO</h2>
+      <p class="small">
+        Revisa las variantes y cantidades antes de abrir WhatsApp.
+      </p>
+      <div id="orderItems"></div>
+      <form id="orderForm">
+        <div class="form-grid">
+          <label
+            >Nombre (opcional)<input
+              id="customerName"
+              autocomplete="name"
+              maxlength="100" /></label
+          ><label
+            >Vehículo, año y versión (opcional)<input
+              id="customerVehicle"
+              placeholder="Ej. Toyota Hilux, año y versión"
+              maxlength="180"
+          /></label>
+        </div>
+        <label
+          >Comentarios (opcional)<textarea
+            id="customerNotes"
+            rows="2"
+            maxlength="800"
+            placeholder="Cuéntanos qué necesitas confirmar"
+          ></textarea>
+        </label>
+        <label class="small"
+          >Mensaje preparado<textarea
+            id="orderMessage"
+            rows="6"
+            readonly
+          ></textarea>
+        </label>
+        <p
+          class="small"
+          id="waNotice"
+        ></p>
+        <div class="actions">
+          <button
+            class="btn blue"
+            id="sendOrder"
+            type="submit"
+          >
+            Abrir WhatsApp →</button
+          ><button
+            class="btn outline"
+            type="button"
+            id="copyOrder"
+          >
+            Copiar pedido
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+    ></div>
+    <script src="js/data.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

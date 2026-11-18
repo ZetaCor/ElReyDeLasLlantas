@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta
+      name="robots"
+      content="noindex"
+    />
+    <title>Administración · El Rey de las Llantas</title>
+    <link
+      rel="stylesheet"
+      href="css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="css/admin.css"
+    />
+  </head>
+  <body class="admin-body">
+    <header>
+      <div class="wrap header-row">
+        <a
+          class="logo"
+          href="index.html"
+          >EL REY <small>ADMINISTRACIÓN</small></a
+        ><a
+          class="btn outline"
+          href="index.html"
+          target="_blank"
+          rel="noopener"
+          >Ver sitio →</a
+        >
+      </div>
+    </header>
+    <main class="wrap admin-main">
+      <section
+        id="loginPanel"
+        class="login-panel"
+      >
+        <p class="eyebrow">TU CATÁLOGO, A TU MANERA</p>
+        <h1>Administración</h1>
+        <p>Entra con el acceso temporal del negocio.</p>
+        <form id="login">
+          <label
+            >Correo<input
+              type="email"
+              id="email"
+              autocomplete="username"
+              required /></label
+          ><label
+            >Contraseña<input
+              type="password"
+              id="password"
+              autocomplete="current-password"
+              required /></label
+          ><button
+            class="btn blue"
+            type="submit"
+          >
+            Entrar →
+          </button>
+          <p
+            id="loginError"
+            role="alert"
+          ></p>
+        </form>
+        <p class="small">
+          Modo local de pruebas. Los cambios se guardan en este navegador. Este
+          acceso temporal no protege una web pública.
+        </p>
+      </section>
+      <section
+        id="dashboard"
+        hidden
+      >
+        <div class="admin-heading">
+          <div>
+            <p class="eyebrow">EL REY DE LAS LLANTAS</p>
+            <h1>Tu catálogo</h1>
+          </div>
+          <button
+            id="logout"
+            class="btn outline"
+          >
+            Cerrar sesión
+          </button>
+        </div>
+        <div class="local-note">
+          <strong>Modo local · Sin Supabase</strong
+          ><span
+            >Los cambios se ven en este navegador y dirección. Exporta un
+            respaldo para conservarlos o llevarlos a otro equipo.</span
+          >
+        </div>
+        <div
+          class="admin-tabs"
+          role="tablist"
+          aria-label="Administración"
+        >
+          <button
+            role="tab"
+            aria-selected="true"
+            data-tab="tires"
+          >
+            Llantas</button
+          ><button
+            role="tab"
+            aria-selected="false"
+            data-tab="vehicles"
+          >
+            Vehículos</button
+          ><button
+            role="tab"
+            aria-selected="false"
+            data-tab="brands"
+          >
+            Marcas</button
+          ><button
+            role="tab"
+            aria-selected="false"
+            data-tab="settings"
+          >
+            Ajustes y fondos</button
+          ><button
+            role="tab"
+            aria-selected="false"
+            data-tab="backup"
+          >
+            Respaldos
+          </button>
+        </div>
+        <p
+          id="adminStatus"
+          class="status"
+          role="status"
+        ></p>
+        <section
+          id="panel-tires"
+          role="tabpanel"
+        >
+          <div class="toolbar">
+            <div>
+              <h2>Variantes de llantas</h2>
+              <p class="small">
+                Una ficha por marca, modelo, medida e índices. Las referencias
+                anteriores están en borrador.
+              </p>
+            </div>
+            <button
+              class="btn blue"
+              id="newTire"
+            >
+              + Nueva variante
+            </button>
+          </div>
+          <div class="filters">
+            <input
+              id="adminSearch"
+              type="search"
+              placeholder="Buscar marca, modelo o medida"
+              aria-label="Buscar variantes"
+            /><select
+              id="statusFilter"
+              aria-label="Estado"
+            >
+              <option value="">Todos los estados</option>
+              <option value="published">Publicadas</option>
+              <option value="draft">Borradores</option>
+            </select>
+          </div>
+          <div id="tireList"></div>
+        </section>
+        <section
+          id="panel-vehicles"
+          role="tabpanel"
+          hidden
+        >
+          <div class="toolbar">
+            <div>
+              <h2>Referencias de vehículos</h2>
+              <p class="small">
+                Las medidas dependen del año y versión. No son una garantía de
+                compatibilidad.
+              </p>
+            </div>
+            <button
+              class="btn blue"
+              id="newVehicle"
+            >
+              + Nuevo vehículo
+            </button>
+          </div>
+          <div id="vehicleList"></div>
+        </section>
+        <section
+          id="panel-brands"
+          role="tabpanel"
+          hidden
+        >
+          <div class="toolbar">
+            <div>
+              <h2>Marcas de llantas</h2>
+              <p class="small">
+                Aparecen en el carrusel de marcas de la página. Sube el logo
+                (PNG con fondo transparente se ve mejor) o déjalo vacío para
+                mostrar el nombre.
+              </p>
+            </div>
+            <button
+              class="btn blue"
+              id="newBrand"
+            >
+              + Nueva marca
+            </button>
+          </div>
+          <div id="brandList"></div>
+        </section>
+        <section
+          id="panel-settings"
+          role="tabpanel"
+          hidden
+        >
+          <h2>Ajustes del negocio</h2>
+          <form id="settingsForm">
+            <div class="form-grid">
+              <label
+                >WhatsApp con código de país<input
+                  id="whatsapp"
+                  type="tel"
+                  placeholder="Código de país + número"
+                  maxlength="22"
+                /><small
+                  >Solo dígitos, sin “+”, espacios ni guiones. Vacío desactiva
+                  el envío.</small
+                ></label
+              ><label
+                >Horario<input
+                  id="hours"
+                  maxlength="180"
+                  placeholder="Horario de atención"
+              /></label>
+            </div>
+            <label
+              >Dirección<input
+                id="address"
+                maxlength="300"
+                placeholder="Dirección del negocio"
+            /></label>
+            <h3 class="settings-title">Fotos de portada</h3>
+            <p class="small">
+              La portada cambia sola entre las 4 fotos de la carpeta
+              <strong>img/fondos</strong>. No hay nada que elegir aquí: para
+              usar otras fotos, reemplaza los archivos fondo1.jpg a fondo4.jpg.
+            </p>
+            <button
+              class="btn blue"
+              type="submit"
+            >
+              Guardar ajustes
+            </button>
+          </form>
+        </section>
+        <section
+          id="panel-backup"
+          role="tabpanel"
+          hidden
+        >
+          <h2>Conserva tu trabajo</h2>
+          <div class="backup-grid">
+            <article class="admin-box">
+              <h3>Respaldo completo</h3>
+              <p>
+                Descarga las fichas, vehículos, marcas, ajustes y fotos cargadas. Puedes
+                restaurarlo en este navegador o importarlo en otro equipo.
+              </p>
+              <button
+                class="btn blue"
+                id="exportBackup"
+              >
+                Exportar respaldo JSON
+              </button>
+              <hr />
+              <label
+                >Restaurar un respaldo<input
+                  type="file"
+                  id="importBackup"
+                  accept=".json,application/json"
+              /></label>
+              <p class="small">
+                Se revisa el archivo antes de pedirte confirmar el reemplazo del
+                catálogo local.
+              </p>
+            </article>
+            <article class="admin-box">
+              <h3>Llevar el catálogo a la web</h3>
+              <p>
+                Descarga <strong>data.js</strong> y reemplaza el archivo del
+                mismo nombre en la carpeta <strong>js</strong> del proyecto.
+                Después vuelve a subir el proyecto a tu alojamiento.
+              </p>
+              <button
+                class="btn outline"
+                id="exportSite"
+              >
+                Exportar catálogo para web
+              </button>
+              <p class="small">
+                Incluye borradores y fotos. No guardes datos privados en el
+                catálogo. Los visitantes nuevos verán la versión exportada. Los
+                navegadores con una copia local anterior se actualizan solos y
+                conservan esa copia para descargarla.
+              </p>
+            </article>
+            <article
+              class="admin-box"
+              id="previousBox"
+              hidden
+            >
+              <h3>Copia anterior de este navegador</h3>
+              <p>
+                El catálogo del proyecto se actualizó y reemplazó la copia que
+                tenías guardada en este navegador. Aún puedes descargarla y
+                restaurarla con “Restaurar un respaldo”.
+              </p>
+              <button
+                class="btn outline"
+                id="downloadPrevious"
+              >
+                Descargar copia anterior
+              </button>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+    <dialog
+      id="tireEditor"
+      aria-labelledby="tireTitle"
+    >
+      <button
+        class="close"
+        data-close
+        aria-label="Cerrar editor"
+      >
+        ×
+      </button>
+      <p class="eyebrow">FICHA INDIVIDUAL</p>
+      <h2 id="tireTitle">Nueva variante</h2>
+      <form id="tireForm">
+        <div class="photo-editor">
+          <img
+            id="tirePreview"
+            alt="Vista previa de la llanta"
+            hidden
+          />
+          <div>
+            <label
+              >Foto de la variante<input
+                id="tirePhoto"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+            /></label>
+            <p class="small">
+              Puede leer “Falken WILDPEAK AT4-W 35x12,50R17LT 125R.png”. Revisa
+              los datos antes de guardar.
+            </p>
+            <button
+              class="btn outline compact"
+              id="useFilename"
+              type="button"
+              hidden
+            >
+              Usar datos del nombre</button
+            ><button
+              class="text-btn"
+              id="removePhoto"
+              type="button"
+            >
+              Quitar foto
+            </button>
+          </div>
+        </div>
+        <div class="form-grid">
+          <label
+            >Marca<input
+              id="tBrand"
+              required
+              maxlength="70" /></label
+          ><label
+            >Modelo exacto<input
+              id="tModel"
+              required
+              maxlength="120"
+              placeholder="WILDPEAK AT4/W" /></label
+          ><label
+            >Medida de esta variante<input
+              id="tSize"
+              required
+              maxlength="40"
+              placeholder="35x12.50R17LT" /></label
+          ><label
+            >Uso<select id="tType">
+              <option>Todo terreno</option>
+              <option>Turismo</option>
+              <option>SUV</option>
+              <option>Camioneta</option>
+              <option>Carretera</option>
+              <option>Barro</option>
+              <option>Comercial</option>
+            </select></label
+          ><label
+            >Índice de carga<input
+              id="tLoad"
+              maxlength="7"
+              placeholder="125" /></label
+          ><label
+            >Índice de velocidad<input
+              id="tSpeed"
+              maxlength="2"
+              placeholder="R"
+          /></label>
+        </div>
+        <label
+          >Descripción<textarea
+            id="tDescription"
+            rows="3"
+            maxlength="2000"
+          ></textarea></label
+        ><label
+          >Especificaciones adicionales<textarea
+            id="tSpecs"
+            rows="4"
+            placeholder="Una por línea: Nombre | Valor&#10;Ejemplo: Construcción | Radial"
+          ></textarea
+          ><small
+            >Agrega solo datos de la ficha exacta. No se reutilizan
+            especificaciones de otras medidas.</small
+          ></label
+        ><label class="check"
+          ><input
+            type="checkbox"
+            id="tPublished"
+          />
+          Mostrar esta variante en el catálogo</label
+        >
+        <p
+          id="tireError"
+          role="alert"
+          class="error"
+        ></p>
+        <div class="actions">
+          <button
+            class="btn blue"
+            id="saveTire"
+            type="submit"
+          >
+            Guardar variante</button
+          ><button
+            class="btn outline"
+            type="button"
+            data-close
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog
+      id="vehicleEditor"
+      aria-labelledby="vehicleTitle"
+    >
+      <button
+        class="close"
+        data-close
+        aria-label="Cerrar editor"
+      >
+        ×
+      </button>
+      <h2 id="vehicleTitle">Referencia de vehículo</h2>
+      <form id="vehicleForm">
+        <div class="form-grid">
+          <label
+            >Marca<input
+              id="vMake"
+              required
+              maxlength="80" /></label
+          ><label
+            >Modelo / versión<input
+              id="vModel"
+              required
+              maxlength="120"
+          /></label>
+        </div>
+        <label
+          >Carrocería<select id="vBody">
+            <option value="sedan">Sedán</option>
+            <option value="hatch">Hatchback</option>
+            <option value="suv">SUV</option>
+            <option value="pickup">Pickup</option>
+          </select></label
+        ><label
+          >Medidas orientativas, una por línea<textarea
+            id="vSizes"
+            required
+            rows="3"
+          ></textarea></label
+        ><label
+          >Foto del vehículo<input
+            id="vPhoto"
+            type="file"
+            accept="image/png,image/jpeg,image/webp" /></label
+        ><img
+          id="vehiclePreview"
+          class="vehicle-preview"
+          alt="Vista previa del vehículo"
+          hidden
+        /><button
+          class="text-btn"
+          type="button"
+          id="removeVehiclePhoto"
+        >
+          Quitar foto
+        </button>
+        <p class="small">
+          Confirma las medidas con la versión y el año. Una medida coincidente
+          no confirma rin, índices ni otras condiciones.
+        </p>
+        <p
+          id="vehicleError"
+          class="error"
+          role="alert"
+        ></p>
+        <button
+          class="btn blue"
+          id="saveVehicle"
+        >
+          Guardar referencia
+        </button>
+      </form>
+    </dialog>
+    <dialog
+      id="brandEditor"
+      aria-labelledby="brandTitle"
+    >
+      <button
+        class="close"
+        data-close
+        aria-label="Cerrar editor"
+      >
+        ×
+      </button>
+      <h2 id="brandTitle">Marca de llantas</h2>
+      <form id="brandForm">
+        <label
+          >Nombre de la marca<input
+            id="bName"
+            required
+            maxlength="60"
+            placeholder="Michelin"
+        /></label>
+        <label
+          >Logo de la marca<input
+            id="bLogo"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+        /></label>
+        <img
+          id="brandPreview"
+          class="brand-preview"
+          alt="Vista previa del logo"
+          hidden
+        /><button
+          class="text-btn"
+          type="button"
+          id="removeBrandLogo"
+        >
+          Quitar logo
+        </button>
+        <p class="small">
+          Usa el logo oficial de la marca. Sin logo, se muestra el nombre en
+          texto.
+        </p>
+        <p
+          id="brandError"
+          class="error"
+          role="alert"
+        ></p>
+        <button
+          class="btn blue"
+          id="saveBrand"
+        >
+          Guardar marca
+        </button>
+      </form>
+    </dialog>
+    <dialog
+      id="confirmDialog"
+      aria-labelledby="confirmTitle"
+    >
+      <h2 id="confirmTitle">Confirmar cambio</h2>
+      <p id="confirmText"></p>
+      <div class="actions">
+        <button
+          class="btn blue"
+          id="confirmYes"
+        >
+          Confirmar</button
+        ><button
+          class="btn outline"
+          data-close
+        >
+          Cancelar
+        </button>
+      </div>
+    </dialog>
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

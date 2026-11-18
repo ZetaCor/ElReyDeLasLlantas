@@ -1,0 +1,360 @@
+.admin-body {
+  background: var(--paper);
+}
+.admin-main {
+  padding-top: 35px;
+  padding-bottom: 70px;
+}
+.admin-main h1 {
+  font-size: 38px;
+  margin-bottom: 0;
+}
+.admin-main h2 {
+  font-size: 29px;
+}
+.admin-main h3 {
+  font-size: 23px;
+}
+.admin-heading,
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.admin-heading .eyebrow {
+  margin-bottom: 8px;
+}
+.login-panel {
+  max-width: 450px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 35px;
+  margin: 45px auto;
+}
+.login-panel h1 {
+  margin-bottom: 20px;
+}
+.login-panel form label {
+  margin: 15px 0;
+}
+.login-panel .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+.local-note {
+  background: #fff9e1;
+  border-left: 3px solid var(--gold);
+  padding: 15px 20px;
+  font-size: 13px;
+  margin: 28px 0;
+}
+.local-note strong {
+  display: block;
+}
+.local-note span {
+  display: block;
+  margin-top: 3px;
+}
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #cad3e1;
+  overflow-x: auto;
+}
+.admin-tabs button {
+  padding: 13px 20px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  background: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.admin-tabs button[aria-selected='true'] {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.status {
+  min-height: 24px;
+  font-size: 13px;
+  margin: 20px 0;
+}
+.status:empty {
+  min-height: 0;
+  margin: 12px 0;
+}
+.status.error,
+.error,
+#loginError {
+  color: #a42323;
+  font-size: 13px;
+}
+.toolbar {
+  margin: 25px 0 20px;
+}
+.toolbar h2 {
+  margin-bottom: 8px;
+}
+.toolbar p {
+  margin-bottom: 0;
+}
+.admin-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 15px 20px;
+  margin: 10px 0;
+}
+.admin-row img,
+.admin-row .no-photo {
+  width: 70px;
+  height: 75px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: var(--paper);
+}
+.no-photo {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+}
+.admin-row .info {
+  flex: 1;
+  min-width: 0;
+}
+.admin-row h3 {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  margin: 4px 0;
+}
+.admin-row p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+.badge {
+  display: inline-block;
+  background: #e7edf6;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.badge.live {
+  color: #0c6440;
+  background: #dff5e8;
+}
+.compact {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.danger {
+  color: #a52323;
+  border-color: #d8a3a3;
+  background: white;
+}
+.text-btn {
+  border: 0;
+  background: none;
+  color: var(--blue);
+  text-decoration: underline;
+  font-size: 12px;
+  padding: 8px 0;
+}
+.admin-box {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 28px;
+}
+.admin-box p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.backup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+.backup-grid hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 30px 0;
+}
+.background-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.background-choice {
+  border: 2px solid var(--line);
+  background: white;
+  padding: 8px;
+  cursor: pointer;
+}
+.background-choice:has(input:checked) {
+  border-color: var(--blue);
+}
+.background-choice img {
+  height: 130px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+.background-choice input {
+  width: auto;
+  margin-right: 8px;
+}
+.settings-title {
+  margin-top: 30px;
+}
+#settingsForm > label {
+  margin-top: 20px;
+}
+label small {
+  font-size: 11px;
+  font-weight: 400;
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.photo-editor {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.photo-editor > img {
+  width: 105px;
+  height: 145px;
+  object-fit: contain;
+}
+.photo-editor > div {
+  flex: 1;
+}
+.photo-editor .small {
+  margin-top: 5px;
+}
+.photo-editor input {
+  font-size: 12px;
+}
+.photo-editor .text-btn {
+  margin-left: 12px;
+}
+dialog form > label {
+  margin-top: 15px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.check input {
+  width: 18px;
+  height: 18px;
+}
+.brand-preview {
+  height: 70px;
+  max-width: 220px;
+  object-fit: contain;
+  margin: 15px 0;
+  background: var(--paper);
+  padding: 8px;
+}
+.vehicle-preview {
+  height: 130px;
+  width: 180px;
+  object-fit: contain;
+  margin: 15px 0;
+}
+.admin-body .header-row .logo small {
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+.admin-body .header-row .logo {
+  font-size: 24px;
+}
+#panel-settings,
+#panel-backup {
+  padding-top: 20px;
+}
+#confirmDialog {
+  max-width: 460px;
+}
+@media (max-width: 700px) {
+  .admin-main {
+    padding-top: 20px;
+  }
+  .admin-heading h1 {
+    font-size: 30px;
+  }
+  .admin-heading .btn {
+    padding: 10px;
+    font-size: 11px;
+  }
+  .admin-tabs button {
+    padding: 12px;
+    font-size: 12px;
+  }
+  .toolbar {
+    align-items: start;
+    flex-direction: column;
+  }
+  .admin-row {
+    flex-wrap: wrap;
+    padding: 14px;
+    gap: 12px;
+  }
+  .admin-row img,
+  .admin-row .no-photo {
+    width: 45px;
+    height: 60px;
+  }
+  .admin-row .actions {
+    width: 100%;
+  }
+  .admin-row .info {
+    min-width: 180px;
+  }
+  .admin-row h3 {
+    font-size: 17px;
+  }
+  .background-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .background-choice img {
+    height: 100px;
+  }
+  .backup-grid {
+    grid-template-columns: 1fr;
+  }
+  .login-panel {
+    margin: 15px auto;
+    padding: 25px;
+  }
+  .photo-editor {
+    gap: 12px;
+  }
+  .photo-editor > img {
+    width: 70px;
+  }
+  .photo-editor input {
+    max-width: 100%;
+  }
+  .admin-body header .logo {
+    font-size: 20px;
+  }
+  .admin-body .header-row .logo small {
+    font-size: 8px;
+  }
+  .admin-main h2 {
+    font-size: 26px;
+  }
+}
